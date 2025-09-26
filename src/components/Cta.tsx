@@ -11,7 +11,7 @@ const Cta = () => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="container mx-auto px-4">
         <div className="bg-radial-glow rounded-3xl p-10 md:p-20 text-center flex flex-col items-center gap-6">

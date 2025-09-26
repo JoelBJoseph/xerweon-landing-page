@@ -9,7 +9,7 @@ const ServiceCard = ({ title, description, className, children, index }: { title
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
     whileHover={{ y: -5, scale: 1.02 }}
   >
     <div className="relative h-64 mb-4 overflow-hidden rounded-lg">
@@ -31,7 +31,7 @@ const Services = () => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="container mx-auto px-4 text-center">
         <motion.div 
@@ -39,7 +39,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <Badge>Services</Badge>
         </motion.div>
@@ -48,7 +48,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           Innovative services for growth
         </motion.h2>
@@ -57,7 +57,7 @@ const Services = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           Tailored solutions to streamline, innovate, and grow.
         </motion.p>

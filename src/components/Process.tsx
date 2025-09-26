@@ -8,7 +8,7 @@ const ProcessCard = ({ title, description, children, index }: { title: string; d
     initial={{ opacity: 0, y: 50 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true, amount: 0.3 }}
-    transition={{ duration: 0.6, delay: index * 0.1 }}
+    transition={{ duration: 0.5, delay: index * 0.1 }}
     whileHover={{ y: -5, scale: 1.02 }}
   >
     <div className="bg-black/20 border border-border-color rounded-xl h-48 flex items-center justify-center overflow-hidden">
@@ -27,7 +27,7 @@ const Process = () => {
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: 0.8, ease: 'easeOut' }}
+      transition={{ duration: 0.5, ease: 'easeOut' }}
     >
       <div className="container mx-auto px-4 text-center">
         <motion.div 
@@ -35,7 +35,7 @@ const Process = () => {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.5 }}
         >
           <Badge>Process</Badge>
         </motion.div>
@@ -44,7 +44,7 @@ const Process = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.1 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
         >
           Your path to excellence
         </motion.h2>
@@ -53,7 +53,7 @@ const Process = () => {
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
         >
           A simple, effective approach to deliver excellence.
         </motion.p>
