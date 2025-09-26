@@ -6,6 +6,36 @@ import { Switch } from '@headlessui/react';
 import { cn } from '../lib/utils';
 import { motion } from 'framer-motion';
 
+const cardVariants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: (i: number) => ({
+    opacity: 1,
+    y: 0,
+    transition: {
+      delay: i * 0.1,
+      duration: 0.5,
+      ease: 'easeOut',
+      staggerChildren: 0.1,
+    },
+  }),
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.4 } },
+};
+
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: { opacity: 1, transition: { staggerChildren: 0.08 } },
+};
+
+const featureVariants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: { opacity: 1, x: 0 },
+};
+
+
 const Pricing = () => {
   const [isYearly, setIsYearly] = useState(true);
 
@@ -72,12 +102,15 @@ const Pricing = () => {
           <Switch
             checked={isYearly}
             onChange={setIsYearly}
-            className="bg-dark-bg relative inline-flex h-10 w-20 items-center rounded-full border border-border-color"
+            className={cn(
+              'bg-dark-bg relative inline-flex h-10 w-20 items-center rounded-full border border-border-color p-1 transition-colors focus:outline-none focus:ring-2 focus:ring-brand-cyan focus:ring-offset-2 focus:ring-offset-black',
+              isYearly ? 'justify-end' : 'justify-start'
+            )}
           >
-            <span
-              className={`${
-                isYearly ? 'translate-x-10' : 'translate-x-1'
-              } inline-block h-8 w-8 transform rounded-full bg-brand-cyan transition`}
+            <motion.span
+              layout
+              transition={{ type: 'spring', stiffness: 500, damping: 40 }}
+              className="h-8 w-8 rounded-full bg-brand-cyan"
             />
           </Switch>
           <span className={cn('text-lg', isYearly && 'text-white')}>Annually</span>
@@ -88,19 +121,20 @@ const Pricing = () => {
             <motion.div 
               key={plan.name} 
               className="bg-card-gradient border border-border-color rounded-3xl p-8 flex flex-col text-left"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={cardVariants}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true, amount: 0.3 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
+              custom={index}
               whileHover={{ y: -5, scale: 1.02 }}
             >
-              <div className="flex items-center gap-4 mb-4">
+              <motion.div variants={itemVariants} className="flex items-center gap-4 mb-4">
                 <div className={cn("w-12 h-12 rounded-lg flex items-center justify-center", index === 2 ? 'bg-brand-cyan' : 'bg-white/20')}>
                   <plan.icon className="w-6 h-6 text-white" />
                 </div>
                 <h3 className="text-2xl font-medium">{plan.name}</h3>
-              </div>
-              <div className="mb-4">
+              </motion.div>
+              <motion.div variants={itemVariants} className="mb-4">
                 {typeof plan.price.monthly === 'number' ? (
                   <p className="text-4xl font-bold">
                     ${isYearly ? (plan.price.yearly / 12).toFixed(0) : plan.price.monthly}
@@ -109,19 +143,21 @@ const Pricing = () => {
                 ) : (
                   <p className="text-4xl font-bold">Custom</p>
                 )}
-              </div>
-              <p className="text-text-secondary mb-8 h-12">{plan.description}</p>
-              <Button variant="primary" className="w-full mb-8">
-                {plan.name === 'Enterprises' ? 'Schedule a call' : 'Go with this plan'}
-              </Button>
-              <ul className="space-y-4">
+              </motion.div>
+              <motion.p variants={itemVariants} className="text-text-secondary mb-8 h-12">{plan.description}</motion.p>
+              <motion.div variants={itemVariants}>
+                <Button variant="primary" className="w-full mb-8">
+                  {plan.name === 'Enterprises' ? 'Schedule a call' : 'Go with this plan'}
+                </Button>
+              </motion.div>
+              <motion.ul variants={listVariants} className="space-y-4">
                 {plan.features.map((feature) => (
-                  <li key={feature} className="flex items-center gap-3">
+                  <motion.li variants={featureVariants} key={feature} className="flex items-center gap-3">
                     <Check className="w-5 h-5 text-brand-cyan" />
                     <span className="text-text-primary">{feature}</span>
-                  </li>
+                  </motion.li>
                 ))}
-              </ul>
+              </motion.ul>
             </motion.div>
           ))}
         </div>

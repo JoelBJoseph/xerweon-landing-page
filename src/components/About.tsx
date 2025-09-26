@@ -21,7 +21,7 @@ const About = () => {
         <div className="relative flex justify-center items-center">
           <div className="absolute inset-0 bg-radial-glow opacity-30"></div>
           <motion.h2 
-            className="text-3xl md:text-5xl font-medium max-w-4xl mx-auto !leading-relaxed"
+            className="text-3xl md:text-5xl font-medium max-w-4xl mx-auto flex flex-wrap justify-center gap-x-[0.3em] gap-y-3"
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, amount: 0.5 }}
@@ -36,7 +36,7 @@ const About = () => {
                 }}
                 className="inline-block"
               >
-                {el}{" "}
+                {el}
               </motion.span>
             ))}
           </motion.h2>
